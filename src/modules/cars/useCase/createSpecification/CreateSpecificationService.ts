@@ -12,6 +12,8 @@ class CreateSpecificationUseCase {
     const specificationAlreadyExists =
       this.specificationReposiitory.findByName(name);
 
+    const string = "oi tchau suave";
+
     if (specificationAlreadyExists) {
       throw new Error("Specification already exists!");
     }
