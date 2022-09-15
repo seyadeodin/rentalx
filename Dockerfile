@@ -7,7 +7,7 @@ WORKDIR /usr/app
 COPY package.json ./
 # copies package.json ./ inside the directorty
 
-RUN npm install
+RUN npm install --force
 # download package.json dependencies
 
 COPY . .
@@ -16,6 +16,6 @@ COPY . .
 EXPOSE 3333
 #local:host:3333
 
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev" ]
 #starts our server
 
