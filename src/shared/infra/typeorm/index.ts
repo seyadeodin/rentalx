@@ -1,4 +1,4 @@
-import { DataSource } from "typeorm";
+import { DataSource, getConnectionOptions } from "typeorm";
 import "reflect-metadata";
 
 import { User } from "@modules/acccounts/infra/typeorm/entities/User";
@@ -40,7 +40,12 @@ const dataSource = new DataSource({
 });
 
 function createConnection(host = "localhost"): Promise<DataSource> {
-  return dataSource.setOptions({ host }).initialize();
+  return dataSource
+    .setOptions({
+      host,
+      database: process.env.NODE_ENV === "test" ? "rentx_test" : "rentx",
+    })
+    .initialize();
 }
 
 export { dataSource, createConnection };
